@@ -70,26 +70,26 @@ app.get('/qq', function(req, res){
         });
     });
 });
-app.post('/add', function(req, res){
-    var movie = new MovieModel(req.body);
-    movie.save(function(err, movie){
-        res.json(movie);
+    app.post('/add', function(req, res){
+        var movie = new MovieModel(req.body);
+        movie.save(function(err, movie){
+            res.json(movie);
+        });
     });
-});
-app.get('/find', function(req, res){
-    crawler.crawl(req.query.url || 'http://film.qq.com/cover/4/49a5yjar93mpa0m.html', function(err, result){
-        res.json(result);
+    app.get('/find', function(req, res){
+        crawler.crawl(req.query.url || 'http://film.qq.com/cover/4/49a5yjar93mpa0m.html', function(err, result){
+            res.json(result);
+        });
     });
-});
-app.get('/t', function(req, res){
-    request.post('http://localhost:3002/u?url=http://img.1985t.com/uploads/attaches/2014/06/15959-rs3jWL.jpg',
-        {auth: {bearer: req.user.token}}, function(err, response, body){
-        if(!err && response.statusCode === 200){
-            res.send('hhh');
-        }else{
-            res.sendStatus(403);
-        }
+    app.get('/t', function(req, res){
+        request.post(CONFIG.PICTURE + '/u?url=http://img.1985t.com/uploads/attaches/2014/06/15959-rs3jWL.jpg',
+            {auth: {bearer: req.user.token}}, function(err, response, body){
+            if(!err && response.statusCode === 200){
+                res.send('hhh');
+            }else{
+                res.sendStatus(403);
+            }
+        });
     });
-});
 
 };

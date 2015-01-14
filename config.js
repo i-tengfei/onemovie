@@ -1,6 +1,7 @@
 module.exports = {
     DATABASE: 'mongodb://localhost:27017/test',
     PORT: 3003,
+    PICTURE: 'http://localhost:3002',
     SESSION: {
         PERSISTENCE: false,
         DATABASE: 'mongodb://localhost:27017/test',

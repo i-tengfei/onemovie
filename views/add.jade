@@ -1,0 +1,19 @@
+doctype html
+html(lang='zh')
+    head
+        title 添加
+        script(src='/public/lib/jquery/dist/jquery.min.js')
+        script.
+            function find(){
+                var url = document.getElementById('url').value;
+                //http://film.qq.com/cover/4/49a5yjar93mpa0m.html
+                $.ajax('/find?url=' + url).done(function(result){
+                    console.log(result);
+                });
+            }
+    body
+        input(id='url')
+        input(type='button' value='获取' onclick='find()')
+        form(action='/add')
+            input(name='name')
+            input(type='submit')
